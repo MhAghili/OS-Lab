@@ -14,15 +14,15 @@ int main(int argc, char *argv[]){
         number = atoi(argv[1]);
 
 		asm volatile(
-			"movl %%ebx, %0;" // saved_ebx = ebx
-			"movl %1, %%ebx;" // ebx = number
+			"movl %%ebx, %0;"
+			"movl %1, %%ebx;"
 			: "=r" (saved_ebx)
 			: "r"(number)
 		);
 
 		printf(1, "User: find_largest_prime_factor() called for number: %d\n" , number);
 		printf(1, "Largest prime factor of %d is: %d\n" , number , find_largest_prime_factor());
-		asm("movl %0, %%ebx" : : "r"(saved_ebx)); // ebx = saved_ebx -> restore
+		asm("movl %0, %%ebx" : : "r"(saved_ebx));
 		exit();  	
     }
 

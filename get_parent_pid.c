@@ -45,8 +45,6 @@ int main(int argc, char *argv[])
   pid2 = fork();
 
   if(pid0 == 0 && pid1 == 0 && pid2){
-    printf(1, "User: printing ancestors for pid: %d\n" , pid2);
-
     asm volatile(
     "movl %%ebx, %0;"
     "movl %1, %%ebx;"
